@@ -1,0 +1,16 @@
+{
+    "products": [
+        {
+            "id": "xxx2.1",
+            "title": "medicalSystem"
+        },
+        {
+            "id": "xxx2.2",
+            "title": "civilSystem"
+        },
+        {
+            "id": "xxx2.3",
+            "title": "computerSystem"
+        }
+    ]
+}
