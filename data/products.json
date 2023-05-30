@@ -1,16 +1,19 @@
 {
     "products": [
         {
-            "id": "xxx2.1",
-            "title": "medicalSystem"
+            "id": "p1",
+            "title": "medicalSystem",
+            "price": "300"
         },
         {
-            "id": "xxx2.2",
-            "title": "civilSystem"
+            "id": "p2",
+            "title": "civilSystem",
+            "price": "400"
         },
         {
-            "id": "xxx2.3",
-            "title": "computerSystem"
+            "id": "p3",
+            "title": "computerSystem",
+            "price": "500"
         }
     ]
 }
