@@ -19,12 +19,20 @@ const productsid = (props) => {
 // context is an object that we can access to URL in getStaticProps function 
 // we will get Error if we use just getStaticProps , because , we are using dynamic route
 // we need to use getStaticPaths , because , we are using dynamic route
-export async function getStaticProps(context) {
-    const { params } = context
-    const productid = params.productsid
+
+
+const getData = async () => {
     const filePath = path.join(process.cwd(), 'data', 'products.json')
     const jsonData = await fs.readFile(filePath)
     const data = JSON.parse(jsonData)
+    return data;
+}
+
+export async function getStaticProps(context) {
+    const { params } = context
+    const productid = params.productsid
+    // we use await to stop process . because we must calculate getData
+    const data = await getData()
     const product = data.products.find((item) => item.id === productid)
     return {
         props: {
@@ -35,12 +43,11 @@ export async function getStaticProps(context) {
 
 // getStaticPaths return  only an Object
 export async function getStaticPaths() {
+    const data = await getData()
+    const ids = data.products.map((item) => item.id)
+    const params = ids.map((item) => ({ params: { productsid: item } }))
     return {
-        paths: [
-            { params: { productsid: "p1" } },
-            { params: { productsid: "p2" } },
-            { params: { productsid: "p3" } },
-        ],
+        paths: params,
         fallback: false,
     }
 }
